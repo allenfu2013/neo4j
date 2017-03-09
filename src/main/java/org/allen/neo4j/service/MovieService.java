@@ -50,4 +50,12 @@ public class MovieService {
         Collection<Movie> result = movieRepository.graph(limit);
         return toD3Format(result);
     }
+
+    public Collection<Movie> getMovies(String actor) {
+        return movieRepository.getMovies(actor);
+    }
+
+    public Movie getMovieByTitle(String title) {
+        return movieRepository.findByTitle(title);
+    }
 }

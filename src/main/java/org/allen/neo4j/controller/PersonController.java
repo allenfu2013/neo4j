@@ -3,10 +3,7 @@ package org.allen.neo4j.controller;
 import org.allen.neo4j.repositories.PersonRepository;
 import org.allen.neo4j.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,5 +32,15 @@ public class PersonController {
         Map<String, Object> ret = new HashMap<>();
         ret.put("retCode", 0);
         return ret;
+    }
+
+    @RequestMapping(value = "/black", method = RequestMethod.GET)
+    public Object black(@RequestParam String type) {
+        return personRepository.findBlack(type);
+    }
+
+    @RequestMapping(value = "/first-black", method = RequestMethod.GET)
+    public Object firstBlack() {
+        return personRepository.findFirstBlack();
     }
 }

@@ -30,6 +30,13 @@ public class Person {
     @Relationship(type = "LIVE_IN")
     private HomeCity homeCity;
 
+    @Relationship(type = "BLACK_OF")
+    private BlackType blackType;
+
+    public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
+    }
+
     public Person() {
     }
 
@@ -103,5 +110,13 @@ public class Person {
 
     public void setHomeCity(HomeCity homeCity) {
         this.homeCity = homeCity;
+    }
+
+    public BlackType getBlackType() {
+        return blackType;
+    }
+
+    public void setBlackType(BlackType blackType) {
+        this.blackType = blackType;
     }
 }

@@ -20,7 +20,7 @@ public class Role {
     private Collection<String> roles = new ArrayList<>();
 
     @StartNode
-    private Person person;
+    private Actor actor;
 
     @EndNode
     private Movie movie;
@@ -28,9 +28,9 @@ public class Role {
     public Role() {
     }
 
-    public Role(Movie movie, Person actor) {
+    public Role(Movie movie, Actor actor) {
         this.movie = movie;
-        this.person = actor;
+        this.actor = actor;
     }
 
     public Long getId() {
@@ -41,8 +41,8 @@ public class Role {
         return roles;
     }
 
-    public Person getPerson() {
-        return person;
+    public Actor getActor() {
+        return actor;
     }
 
     public Movie getMovie() {

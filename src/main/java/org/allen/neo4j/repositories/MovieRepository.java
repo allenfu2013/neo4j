@@ -16,9 +16,9 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie, Long>
     @Query("MATCH (m:Movie) WHERE m.title =~ ('(?i).*'+{title}+'.*') RETURN m")
     Collection<Movie> findByTitleContaining(@Param("title") String title);
 
-    @Query("MATCH (m:Movie)<-[r:ACTED_IN]-(a:Person) RETURN m,r,a LIMIT {limit}")
+    @Query("MATCH (m:Movie)<-[r:ACTED_IN]-(a:Actor) RETURN m,r,a LIMIT {limit}")
     Collection<Movie> graph(@Param("limit") int limit);
 
-    @Query("MATCH (m:Movie)<-[:ACTED_IN]-(a:Person) WHERE a.name = {actor} RETURN m")
+    @Query("MATCH (m:Movie)<-[:ACTED_IN]-(a:Actor) WHERE a.name = {actor} RETURN m")
     Collection<Movie> getMovies(@Param("actor") String actor);
 }

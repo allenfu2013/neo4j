@@ -26,7 +26,7 @@ public class MovieService {
             int target = i;
             i++;
             for (Role role : movie.getRoles()) {
-                Map<String, Object> actor = map("title", role.getPerson().getName(), "label", "actor");
+                Map<String, Object> actor = map("title", role.getActor().getName(), "label", "actor");
                 int source = nodes.indexOf(actor);
                 if (source == -1) {
                     nodes.add(actor);

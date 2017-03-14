@@ -33,11 +33,4 @@ public class IdCardUtil {
     public static String getCityCode(String idCard) {
         return idCard.substring(0, 6);
     }
-
-    public static void main(String[] args) {
-        String idCard = "420115198602010092";
-        System.out.println(getAge(idCard));
-        System.out.println(getSex(idCard));
-        System.out.println(getCityCode(idCard));
-    }
 }

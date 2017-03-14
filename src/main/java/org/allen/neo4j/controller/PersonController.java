@@ -1,5 +1,6 @@
 package org.allen.neo4j.controller;
 
+import org.allen.neo4j.domain.Person;
 import org.allen.neo4j.repositories.PersonRepository;
 import org.allen.neo4j.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,16 @@ public class PersonController {
     @RequestMapping(value = "/first-black", method = RequestMethod.GET)
     public Object firstBlack() {
         return personRepository.findFirstBlack();
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Object createPerson(@RequestParam String name,
+                               @RequestParam String idCard,
+                               @RequestParam String mobile,
+                               @RequestParam String address,
+                               @RequestParam String education) {
+
+        Person person = personService.createPerson(name, idCard, mobile, address, education);
+        return personRepository.save(person);
     }
 }

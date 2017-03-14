@@ -30,7 +30,8 @@ public class PersonService {
             List<String> lines = FileUtils.readLines(file, Charset.forName("UTF-8"));
             List<Person> persons = new ArrayList<>();
             for (String line : lines) {
-                Person person = createPerson(line);
+                String[] val = line.split(",");
+                Person person = createPerson(val[0], val[1], val[2], val[3], val[4]);
 //                persons.add(person);
                 personRepository.save(person);
             }
@@ -42,15 +43,14 @@ public class PersonService {
         }
     }
 
-    private Person createPerson(String line) {
-        String[] val = line.split(",");
+    public Person createPerson(String name, String idCard, String mobile, String address, String education) {
         Person person = new Person();
-        person.setName(val[0]);
-        person.setIdCard(val[1]);
-        person.setMobile(val[2]);
+        person.setName(name);
+        person.setIdCard(idCard);
+        person.setMobile(mobile);
         person.setAge(IdCardUtil.getAge(person.getIdCard()));
-        person.setAddress(val[3]);
-        person.setEducation(val[4]);
+        person.setAddress(address);
+        person.setEducation(education);
         person.setSex(IdCardUtil.getSex(person.getIdCard()));
 
         String cityCode = IdCardUtil.getCityCode(person.getIdCard());

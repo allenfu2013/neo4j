@@ -8,6 +8,7 @@ import org.allen.neo4j.domain.Movie;
 import org.allen.neo4j.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class MovieController {
     @Autowired
     MovieService movieService;
 
-    @RequestMapping("/graph")
+    @RequestMapping(value = "/graph", method = RequestMethod.GET)
     public Map<String, Object> graph(@RequestParam(value = "limit", required = false) Integer limit) {
         return movieService.graph(limit == null ? 100 : limit);
     }

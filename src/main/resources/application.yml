@@ -6,3 +6,11 @@ spring:
       username: neo4j
       password: 123456
     repositories: org.allen.neo4j.repositories
+
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: fuyong
+    keyStoreType: PKCS12
+    keyAlias: tomcat1
